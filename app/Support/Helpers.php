@@ -98,8 +98,26 @@
 		$url = 'https://www.youtube.com/oembed?url='.$url.'&format=json';
 		$data = json_decode(file_get_contents($url));
 
-		return $data->html;
+		$html = $data->html;
+		return $html;
 	}
+
+    function vimeo_video($url) {
+        $url = str_replace('vimeo.com', 'player.vimeo.com/video', $url);
+        $html = '<iframe src="'.$url.'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+        return $html;
+    }
+
+    function video($url) {
+        $pos = strpos($url, 'youtube.com');
+        if ($pos !== false) return youtube_video($url);
+
+        $pos = strpos($url, 'youtu.be');
+        if ($pos !== false) return youtube_video($url);
+
+        $pos = strpos($url, 'vimeo.com');
+        if ($pos !== false) return vimeo_video($url);
+    }
 
 	// get social share
 	function share($el) {

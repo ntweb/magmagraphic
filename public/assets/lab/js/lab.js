@@ -502,6 +502,9 @@ function initUI() {
 	(function($) {
 		$('.tabbedwidget').tabs();
 
+        // Select with Search
+        jQuery(".chzn-select").chosen();
+
 	    // crop	    
 	    if ($('#crop-img').length) {        
 	        demoUpload();

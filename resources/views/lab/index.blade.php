@@ -50,6 +50,7 @@
 <script src="{{url('assets/lab/js/ckeditor/ckeditor.js')}}"></script>
 <script src="{{url('assets/lab/js/ckeditor/adapters/jquery.js')}}"></script>
 <script src="{{url('assets/lab/js/Croppie/croppie.min.js')}}"></script>
+<script src="{{url('assets/lab/js/chosen.jquery.min.js')}}"></script>
 <script src="{{url('assets/lab/js/custom.js')}}"></script>
 <script src="{{url('assets/lab/js/lab.js')}}"></script>
 
@@ -276,6 +277,14 @@
                     <ul>
                         <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\OfficeController@index')}}">Lista</a></li>
                         <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\OfficeController@create')}}">Crea nuovo elemento</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href=""><i class="fa fa-fw fa-user-secret" aria-hidden="true"></i> GDPR</a>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);" class="get-html" data-route="{{action('Lab\ParameterController@edit', array('gdpr'))}}">Info generali</a>
+                        </li>
                     </ul>
                 </li>
 

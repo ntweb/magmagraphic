@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ParametersTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(EcommerceTableSeeder::class);
+        $this->call(GdprTableSeeder::class);
     }
 }

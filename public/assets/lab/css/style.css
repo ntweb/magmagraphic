@@ -57,3 +57,7 @@ a.preview {
 .cancelled {
   background-color: red;
 }
+
+.chzn-container {
+    width: 100% !important;
+}
