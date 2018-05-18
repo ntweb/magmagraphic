@@ -247,20 +247,23 @@
                 <li class="dropdown"><a href=""><i class="fa fa-fw fa-shopping-cart" aria-hidden="true"></i> Ecommerce</a>
                     <ul>
                         <li class="dropdown" style="background-color: #c1bfbf;"><a href="#"><b>Coupon</b></a>
-                        <ul>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\CouponController@index')}}">Lista</a></li>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\CouponController@create')}}">Crea nuovo elemento</a></li>
-                        </ul>
+                            <ul>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\CouponController@index')}}">Lista</a></li>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\CouponController@create')}}">Crea nuovo elemento</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown" style="background-color: #c1bfbf;"><a href="#"><b>Met. di consegna</b></a>
-                        <ul>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\ShipmentController@index')}}">Lista</a></li>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\ShipmentController@create')}}">Crea nuovo elemento</a></li>
-                        </ul>
+                            <ul>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\ShipmentController@index')}}">Lista</a></li>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\ShipmentController@create')}}">Crea nuovo elemento</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown" style="background-color: #c1bfbf;"><a href="#"><b>Met. di pagamento</b></a>
-                        <ul>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\PaymentController@index')}}">Lista</a></li>
-                            <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\PaymentController@create')}}">Crea nuovo elemento</a></li>
-                        </ul>
+                            <ul>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\PaymentController@index')}}">Lista</a></li>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\PaymentController@create')}}">Crea nuovo elemento</a></li>
+                            </ul>
+                        </li>
                         <li style="background-color: #c1bfbf;">
                             <a href="javascript:void(0);" class="get-html" data-route="{{action('Lab\CartController@index')}}"><b>Ordini</b></a>
                         </li>
@@ -284,6 +287,12 @@
                     <ul>
                         <li>
                             <a href="javascript:void(0);" class="get-html" data-route="{{action('Lab\ParameterController@edit', array('gdpr'))}}">Info generali</a>
+                        </li>
+                        <li class="dropdown"><a href="#">Cookie</a>
+                            <ul>
+                                <li><a href="javascript:void(0);" class="get-html" data-route="{{action('Lab\CookieController@index')}}">Lista</a></li>
+                                <li><a href="javascript:void(0)" class="get-html" data-route="{{action('Lab\CookieController@create')}}">Crea nuovo elemento</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </li>

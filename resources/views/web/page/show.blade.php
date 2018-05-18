@@ -15,7 +15,7 @@
 
     <br><br>
     <h2>Galleria immagini</h2>
-    @if(count($page_images))
+    @if(isset($page_images))
     <ul>        
     @foreach ($page_images as $el)
         <li>            
@@ -27,7 +27,7 @@
 
     <br><br>
     <h2>Documenti allegati</h2>
-    @if(count($page_docs))
+    @if(isset($page_docs))
     <ul>        
     @foreach ($page_docs as $el)
         <li>            
@@ -39,18 +39,19 @@
 
     <hr>
     <h2>Reviews</h2>
-    @foreach ($page_reviews as $el)
-        <h4>{{$el->title}}</h4>
-        {!! $el->description !!}
-        @if ($el->answer)
-        <div class="well">
-            {!! $el->answer !!}
-        </div>
-        @endif
-    @endforeach
-    
-    <br><br>
+    @if(isset($page_reviews))
+        @foreach ($page_reviews as $el)
+            <h4>{{$el->title}}</h4>
+            {!! $el->description !!}
+            @if ($el->answer)
+            <div class="well">
+                {!! $el->answer !!}
+            </div>
+            @endif
+        @endforeach
 
+    <br><br>
     @include('web.review.index')
+    @endif
 
 @endsection

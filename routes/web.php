@@ -25,6 +25,8 @@ function()
 
 	Route::get('/', 'Web\HomepageController@index')->name('home');
 
+    Route::get('/privacy', 'Web\PrivacyController@index')->name('privacy');
+
 	// Page	
 	Route::get('/'.LaravelLocalization::transRoute('routes.page_show'), 'Web\PageController@show');
 
@@ -272,5 +274,11 @@ Route::group(['middleware' => ['labenter']], function () use ($cms_folder) {
 	Route::get($cms_folder.'office/delete/img/{id}/{img}', 'Lab\OfficeController@deleteImg');
 	Route::get($cms_folder.'office/change/flag/{id}/{field}', 'Lab\OfficeController@changeFlag');
 	Route::put($cms_folder.'office/settings/{id}', 'Lab\OfficeController@settings');
+
+    // Cookie
+    Route::resource($cms_folder.'cookie', 'Lab\CookieController');
+    Route::get($cms_folder.'cookie/change/flag/{id}/{field}', 'Lab\CookieController@changeFlag');
+    Route::put($cms_folder.'cookie/settings/{id}', 'Lab\CookieController@settings');
+
 
 });
