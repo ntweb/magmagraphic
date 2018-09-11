@@ -42,16 +42,25 @@ class GdprTableSeeder extends Seeder
         $c = new \App\Cookie;
         $c->title = 'Sessione';
         $c->description = 'I cookie di sessione sono necessari e aiutano a contribuire a rendere fruibile un sito web abilitando le funzioni di base come la navigazione della pagina e l\'accesso alle aree protette del sito. Il sito web non può funzionare correttamente senza questi cookie.';
+        $c->checked = '1';
+        $c->disabled = '1';
+        $c->active = '1';
         $c->save();
 
         $c = new \App\Cookie;
         $c->title = 'Analytics';
         $c->description = 'I cookie analytics o statistici aiutano i proprietari del sito web a capire come i visitatori interagiscono con i siti raccogliendo e trasmettendo informazioni in forma anonima.';
+        $c->checked = '1';
+        $c->disabled = '0';
+        $c->active = '1';
         $c->save();
 
         $c = new \App\Cookie;
         $c->title = 'Marketing';
         $c->description = 'I cookie per il marketing vengono utilizzati per monitorare i visitatori nei siti web. Con questi cookie si hanno suggerimenti sui prodotti o servizi che potrebbero essere più interessanti per gli utenti del sito.';
+        $c->checked = '1';
+        $c->disabled = '0';
+        $c->active = '1';
         $c->save();
 
     }

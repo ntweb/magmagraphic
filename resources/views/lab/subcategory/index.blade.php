@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
           </div>
-        <h4 class="widgettitle title-primary">{{trans('lab.list')}}</h4>
+        <h4 class="widgettitle title-primary">{{trans('lab.list')}} | <i class="fa fa-facebook-official"></i> Facebook xml: <a href="{{ url('facebook/xml') }}" target="_blank" style="color: aqua;">{{ url('facebook/xml') }}</a></h4>
     </div>
 
     @if(count($arrElements))
@@ -25,6 +25,7 @@
                 <th></th>
             @endif
                 <th class="center"><i class="fa fa-power-off" aria-hidden="true"></i></th>
+                <th class="center"><i class="fa fa-facebook-official" aria-hidden="true"></i></th>
                 <th>ID</th>
                 <th>{{trans('lab.title')}}</th>
                 <th>{{trans('lab.category')}}</th>
@@ -43,6 +44,11 @@
                 <td class="center">
                     <a href="javascript:void(0);" class="cannot-change-flag {{$active = $el->active ? 'colorGreen' : 'colorRed'}}" data-route="{{action('Lab\SubcategoryController@changeFlag', array($el->id, 'active'))}}">                        
                         <i class="fa fa-circle cannot-tip" aria-hidden="true" data-placement="top" data-original-title="{{trans('lab.active')}} ?"></i>
+                    </a>
+                </td>
+                <td class="center">
+                    <a href="javascript:void(0);" class="change-flag {{$facebookxml = $el->facebookxml ? 'colorGreen' : 'colorRed'}}" data-route="{{action('Lab\SubcategoryController@changeFlag', array($el->id, 'facebookxml'))}}">
+                        <i class="fa fa-circle tip" aria-hidden="true" data-placement="top" data-original-title="Export in Facebook catalogue ?"></i>
                     </a>
                 </td>
                 <td>{{$el->id}}</td>

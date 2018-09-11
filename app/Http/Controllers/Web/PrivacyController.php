@@ -9,6 +9,8 @@ use Log;
 
 use SEO;
 use LaravelLocalization;
+use Auth;
+use Session;
 
 class PrivacyController extends Controller
 {
@@ -44,5 +46,26 @@ class PrivacyController extends Controller
         return view()->make('web.page.show', $data);
     }
 
+    public function accept(Request $request) {
+
+        Session::put('cookie_accepted', time());
+        if($request->has('cookie')) {
+            foreach ($request->get('cookie') as $v) {
+                Session::put('cookie_'.$v, time());
+            }
+
+            if (Auth::user()) {
+                $u = Auth::user();
+                foreach ($request->get('cookie') as $v) {
+                    $_cookie = 'cookie_'.$v.'_accepted_at';
+                    $u->$_cookie = \Carbon\Carbon::now();
+                }
+                $u->save();
+            }
+        }
+
+        if ($request->has('redirect')) return redirect($request->get('redirect'));
+        return redirect('/');
+    }
 
 }

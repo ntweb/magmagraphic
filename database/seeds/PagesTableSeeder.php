@@ -36,5 +36,21 @@ class PagesTableSeeder extends Seeder
 			    #echo $p->module." - ";
 			}
 		}     	
+
+		// no index
+		$p = new \App\Page;
+		$p->title = "Site name";
+		$p->module = "noindex";
+		$p->description = "Write something...";
+		$p->noindex = '1';
+		$p->active = '0';
+
+		$p->id_created_by = 1;
+
+		$p->mtitle = $p->title;
+		$p->murl = str_slug($p->title);
+		$p->type = 'standard';
+		$p->save();
+
     }
 }

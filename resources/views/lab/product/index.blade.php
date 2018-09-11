@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
           </div>
-        <h4 class="widgettitle title-primary">{{trans('lab.list')}}</h4>
+        <h4 class="widgettitle title-primary">{{trans('lab.list')}} | <i class="fa fa-facebook-official"></i> Facebook xml: <a href="{{ url('facebook/xml') }}" target="_blank" style="color: aqua;">{{ url('facebook/xml') }}</a></h4>
     </div>
 
     @if(count($arrElements))
@@ -27,6 +27,7 @@
                 <th class="center"><i class="fa fa-power-off" aria-hidden="true"></i></th>
                 <th class="center"><i class="fa fa-home" aria-hidden="true"></i></th>
                 <th class="center"><i class="fa fa-usd" aria-hidden="true"></i></th>
+                <th class="center"><i class="fa fa-facebook-official" aria-hidden="true"></i></th>
                 <th>ID</th>
                 <th>{{trans('lab.title')}}</th>
                 <th>{{trans('lab.category')}}</th>
@@ -57,6 +58,13 @@
                     <a href="javascript:void(0);" class="change-flag {{$discount = $el->discount ? 'colorGreen' : 'colorRed'}}" data-route="{{action('Lab\ProductController@changeFlag', array($el->id, 'discount'))}}">                        
                         <i class="fa fa-circle tip" aria-hidden="true" data-placement="top" data-original-title="{{trans('lab.discount')}} ?"></i>
                     </a>
+                </td>
+                <td class="center">
+                    @if($el->price > 0)
+                        <a href="javascript:void(0);" class="change-flag {{$facebookxml = $el->facebookxml ? 'colorGreen' : 'colorRed'}}" data-route="{{action('Lab\ProductController@changeFlag', array($el->id, 'facebookxml'))}}">
+                            <i class="fa fa-circle tip" aria-hidden="true" data-placement="top" data-original-title="Export in Facebook catalogue ?"></i>
+                        </a>
+                    @endif
                 </td>
                 <td>{{$el->id}}</td>
                 <td>{{$el->title}}</td>

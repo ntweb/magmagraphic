@@ -7,6 +7,8 @@ use Schema;
 use View;
 use App;
 use SEO;
+use Session;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,17 +22,22 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
 
-        // // Languages        
+        // Languages
         View::share ('languages', \LaravelLocalization::getSupportedLocales());
 
-        // // Category
+        // Category
         $query =  \App\Category::active()->whereHas('translations', function ($query) {
                                 $query->where('locale', App::getLocale())
                                 ->orderBy('title');
                             });
         View::share ('arrCategories', $query->get());
 
-        // forn pagination that have paramenters
+        // GDPR
+        $query =  \App\Cookie::active('1');
+        View::share ('arrCookies', $query->get());
+        if (Auth::user()) Session::put('cookie_accepted', time());
+
+        // for pagination that have paramenters
         View::share ('pagination_param', array());
         
         // // css above the fold 

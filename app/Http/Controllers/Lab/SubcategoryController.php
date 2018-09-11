@@ -295,6 +295,12 @@ class SubcategoryController extends Controller
 
         $el->save();
 
+        if ($field == 'facebookxml') {
+            DB::table('lab_products')->whereType($id)->update([
+                'facebookxml' => $el->$field
+            ]);
+        }
+
         $result['id'] = $el->id;
         $result['flag'] = $el->$field;
         return response()->json(array('success' => trans('lab.store_ok'), 'result' => json_encode($result)));

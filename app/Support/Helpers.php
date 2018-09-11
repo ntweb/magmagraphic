@@ -228,3 +228,20 @@
 
 		return $_subtotal;
 	}
+	
+	function blockUrl($page = null) {
+
+	    /**** E' possibile bloccare altre risorse basandosi sull'url
+        $pos = strpos(Request::fullUrl(), 'index.php');
+        if ($pos) {
+            return true;
+        }
+        ****/
+
+        if ($page) {
+            if ($page->noindex)
+                return true;
+        }
+
+        return false;
+    }

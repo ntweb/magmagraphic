@@ -14,7 +14,6 @@
                 <th class="center"><i class="fa fa-power-off" aria-hidden="true"></i></th>
                 <th>ID</th>
                 <th>{{trans('lab.title')}}</th>
-                <th>{{trans('lab.created_by')}}</th>
                 <th>{{trans('lab.created_at')}}</th>
                 <th>{{trans('lab.updated_at')}}</th>
                 <th></th>
@@ -30,7 +29,6 @@
                 </td>
                 <td>{{$el->id}}</td>
                 <td>{{$el->title}}</td>
-                <td>{{$el->created_by->name}}</td>
                 <td>{{date($default_lang['datetime'], strtotime($el->created_at))}}</td>
                 <td>{{date($default_lang['datetime'], strtotime($el->updated_at))}}</td>
                 <td class="right">

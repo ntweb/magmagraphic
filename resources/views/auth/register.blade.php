@@ -101,9 +101,46 @@
         <span class="label label-danger">
             <strong>{{ $errors->first('street_number') }}</strong>
         </span>
-    @endif                                                                                                        
+    @endif
 
-    {{-- sto in fase di registrazione di un nuovo account --}}
+    <h2>Newsletter</h2>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="1" name="newsletter_accepted_at" @if(@Auth::user()->newsletter_accepted_at) checked @endif>
+            {{ trans('web.newsletter_acceptance') }} {{ param('gdpr_site_name') }}
+        </label>
+    </div>
+
+    <h2>Cookie, Privacy e trattamento dei dati</h2>
+
+    @foreach($arrCookies as $c)
+    <?php $_cookie = 'cookie_'.$c->id.'_accepted_at'; ?>
+    @if($c->id <> 1)
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="{{ $c->id }}" name="{{ $_cookie }}" @if(@Auth::user()->$_cookie) checked @endif>
+            {{ trans('web.cookie_acceptance') }} {{ $c->title }}: {{ $c->description }}
+        </label>
+    </div>
+    @endif
+    @endforeach
+
+    @if(!Auth::user())
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="1" name="check_privacy">
+            {!! trans('web.privacy_check') !!}
+        </label>
+        @if ($errors->has('check_privacy'))
+            <span class="label label-danger">
+                <strong>{{ $errors->first('check_privacy') }}</strong>
+            </span>
+        @endif
+    </div>
+    @endif
+
+
+        {{-- sto in fase di registrazione di un nuovo account --}}
     @if (!Auth::check())
         <h2>Dati di login</h2>
 

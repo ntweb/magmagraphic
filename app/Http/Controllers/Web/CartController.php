@@ -31,8 +31,8 @@ class CartController extends Controller
     {
         parent::__construct();    	
 
-        $data['page'] = page('cart');
-		view()->share('page', page('cart'));
+        $data['page'] = page('noindex');
+		view()->share('page', $data['page']);
 
         //**** SEO ****//
         SEO::setTitle($data['page']->mtitle);

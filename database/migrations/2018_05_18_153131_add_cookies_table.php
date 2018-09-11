@@ -15,6 +15,8 @@ class AddCookiesTable extends Migration
     {
         Schema::create('lab_cookies', function (Blueprint $table) {
             $table->increments('id');
+            $table->enum('checked', [0,1]);
+            $table->enum('disabled', [0,1]);
             $table->enum('active', [0,1]);
             $table->integer('id_created_by')->nullable();
             $table->integer('id_updated_by')->nullable();

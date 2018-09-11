@@ -39,6 +39,8 @@ class ContactController extends Controller
         $fieldsToValidate["subject"] = "required";
         $fieldsToValidate["email"] = "required|email";
         $fieldsToValidate["message"] = "required";
+        $fieldsToValidate["check_contact"] = "required";
+        $fieldsToValidate["check_privacy"] = "required";
 
         $validator = Validator::make($request->all(), $fieldsToValidate);
         if (!$validator->fails()) {

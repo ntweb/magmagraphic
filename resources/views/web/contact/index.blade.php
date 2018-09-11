@@ -30,7 +30,21 @@
    <textarea name="message" cols="30" rows="10"></textarea>
 
    <br><br>
-   {{trans('web.privacy_check')}}
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="1" name="check_contact">
+            {!! trans('web.contact_check') !!}
+        </label>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="1" name="check_privacy">
+            {!! trans('web.privacy_check') !!}
+        </label>
+    </div>
+
    <br>
    <button type="submit">{{trans('labels.send')}}</button>
 

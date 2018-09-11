@@ -224,8 +224,7 @@ var maincontainer = '#rpc-container'; // container rprincipale per risultati RPC
 
 	// google geocomplete
     $("input[name='city']")
-    .geocomplete({
-        types: ['(cities)'] })
+    .geocomplete({ types: ['(cities)'] })
     .bind("geocode:result", function(event, result){
         $(this).prevAll("input[name='place_id']").first().val(result.place_id);
         var political_short_name = $(this).prevAll("input[name='political_short_name']").first();
@@ -249,7 +248,15 @@ var maincontainer = '#rpc-container'; // container rprincipale per risultati RPC
               window.alert('Geocoder failed due to: ' + status);
             }
           });          
-    });	
+    });
+
+    $(document).on('ready', function(){
+        if ($("input[name='city']").length) {
+            setTimeout(function() {
+                $("input[name='city']").attr("autocomplete", "none");
+            }, 1000);
+        }
+    });
 
 })(jQuery);
 

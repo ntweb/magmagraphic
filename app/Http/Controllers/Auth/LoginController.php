@@ -39,6 +39,8 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+		$data['page'] = page('noindex');
+        view()->share('page', $data['page']);
     }
 
     protected function credentials(Request $request)

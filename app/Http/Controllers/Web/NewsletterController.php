@@ -14,13 +14,14 @@ class NewsletterController extends Controller
 	public function store(Request $request) {
         // validator
         $fieldsToValidate["email"] = "required|email";
+        $fieldsToValidate["check_privacy"] = "required";
 
         $fields = $request->except('_token');
         $validator = Validator::make($fields, $fieldsToValidate);
         if (!$validator->fails()) {
             $el = new \App\Newsletter;
             foreach ($fields as $key => $value) {
-                $el->$key = $value;              
+                $el->$key = $value;
             }
 
             try {

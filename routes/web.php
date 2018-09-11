@@ -26,6 +26,7 @@ function()
 	Route::get('/', 'Web\HomepageController@index')->name('home');
 
     Route::get('/privacy', 'Web\PrivacyController@index')->name('privacy');
+    Route::post('/accept', 'Web\PrivacyController@accept')->name('privacy');
 
 	// Page	
 	Route::get('/'.LaravelLocalization::transRoute('routes.page_show'), 'Web\PageController@show');
@@ -66,12 +67,13 @@ function()
 	// Product
 	Route::get('/'.LaravelLocalization::transRoute('routes.product_show'), 'Web\ProductController@show')->name('category');
 	Route::get('/p/search', 'Web\ProductController@index')->name('category');
+    Route::get('/facebook/xml', 'Web\ProductController@facebookXML');
 
 	// Cart
 	Route::get('/cart/checkout', 'Web\CartController@checkout');
 	Route::get('/cart/shipment', 'Web\CartController@shipment')->middleware('auth');
 	Route::get('/cart/payment', 'Web\CartController@payment')->middleware('auth');
-	Route::get('/cart/summary', 'Web\CartController@summary')->name('staff')->middleware('auth');
+	Route::get('/cart/summary', 'Web\CartController@summary')->name('cart')->middleware('auth');
 	Route::get('/cart/do-payment/{id}', 'Web\CartController@doPayment')->middleware('auth');
 	Route::get('/cart/widget/refresh', 'Web\CartController@refresh');
 	Route::get('/cart/delete/{rowid}', 'Web\CartController@delete');

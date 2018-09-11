@@ -28,5 +28,7 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+		$data['page'] = page('noindex');
+        view()->share('page', $data['page']);
     }
 }
