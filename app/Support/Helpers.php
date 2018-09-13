@@ -17,6 +17,32 @@
 		return Session::get('page_id_'.$id_or_module)[App::getLocale()];
 	}
 
+	function cat_url($cat) {
+        return action('Web\CategoryController@index', array($cat->murl));
+    }
+
+    function sub_url($sub) {
+        $_cat_murl = $sub->category->murl;
+        $_sub_murl = $sub->murl;
+
+        $action = action('Web\SubcategoryController@index', array($_cat_murl, $_sub_murl));
+        if ($_cat_murl == $_sub_murl)
+            $action = str_replace($_sub_murl.'/'.$_sub_murl, $_sub_murl, $action);
+
+        return $action;
+    }
+
+    function prod_url($prod) {
+        $_cat_murl = $prod->category->murl;
+        $_sub_murl = $prod->subcategory->murl;
+
+        $action = action('Web\ProductController@show', array($_cat_murl, $_sub_murl, $prod->murl));
+        if ($_cat_murl == $_sub_murl)
+            $action = str_replace($_sub_murl.'/'.$_sub_murl, $_sub_murl, $action);
+
+        return $action;
+    }
+	
 	function news_url($el) {
 		// chencge route if needed
 		return action('Web\NewsController@show', array($el->type, $el->murl, $el->id));

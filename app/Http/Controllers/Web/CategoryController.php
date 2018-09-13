@@ -28,14 +28,19 @@ class CategoryController extends Controller
         view()->share('review_type', 'category');
     }
 
-    public function index ($foo_category, $id) {
-    	$data['page'] = \App\Category::active()->where('id', '=', $id)->first();
-    	if (!$data['page']) abort(404);
+    public function index ($categoryslug) {
+
+        $data['show_category'] = true;
+        $data['page'] = \App\Category::active()
+            ->leftJoin('lab_categories_translations', 'lab_categories.id', '=', 'lab_categories_translations.category_id')
+            ->where('murl', '=', $categoryslug)
+            ->select('lab_categories.*')
+            ->first();
+        if (!$data['page']) abort(404);
 
     	Session::put('breadcrumb_cat', $data['page']);
     	Session::forget('breadcrumb_subcat');
     	Session::forget('breadcrumb_prod');
-
 
         //**** SEO ****//
         SEO::setTitle($data['page']->mtitle);
@@ -43,7 +48,11 @@ class CategoryController extends Controller
         SEO::opengraph()->setUrl(url()->current());        
         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
         if ($data['page']->img)
-            SEO::opengraph()->addImage(img($data['page'], 'img'));           
+            SEO::opengraph()->addImage(img($data['page'], 'img'));
+
+
+        $data['arrSub'] = $data['page']->subcategories()->get();
+        $data['catToShow'] = $data['page']->id;
 
     	return view()->make('web.ecommerce.category.index', $data);
     }    

@@ -1,21 +1,27 @@
 {{-- important --}}
+<?php
+    $_c = (session()->has('breadcrumb_cat')) ? session()->get('breadcrumb_cat') : null;
+    $_sc = (session()->has('breadcrumb_subcat')) ? session()->get('breadcrumb_subcat') : null;
+    $_prod = (session()->has('breadcrumb_prod')) ? session()->get('breadcrumb_prod') : null;
+?>
 
 @if(!isset($show_search))
 
-<ol class="breadcrumb">
-  	<li><a href="{{ action('Web\HomepageController@index') }}">Home</a></li>
-
-  	@if (session()->has('breadcrumb_cat'))  	
-  	<li><a href="{{ action('Web\CategoryController@index', array(session()->get('breadcrumb_cat')->murl, session()->get('breadcrumb_cat')->id)) }}">{{session()->get('breadcrumb_cat')->title}}</a></li>
-  	@endif
-
-  	@if (session()->has('breadcrumb_subcat'))  	
-  	<li><a href="{{ action('Web\SubcategoryController@index', array(session()->get('breadcrumb_cat')->murl, session()->get('breadcrumb_subcat')->murl, session()->get('breadcrumb_subcat')->id)) }}">{{session()->get('breadcrumb_subcat')->title}}</a></li>
-  	@endif
-
-  	@if (session()->has('breadcrumb_prod'))  	
-  	<li><a href="{{ action('Web\ProductController@show', array(session()->get('breadcrumb_cat')->murl, session()->get('breadcrumb_subcat')->murl, session()->get('breadcrumb_prod')->murl, session()->get('breadcrumb_prod')->id)) }}">{{session()->get('breadcrumb_prod')->title}}</a></li>
-  	@endif
-</ol>
+<section class="page-header">
+	<div class="container">
+		<ul class="breadcrumb">
+			<li><a href="{{ action('Web\HomepageController@index') }}" title="Vai a: homepage">Home</a></li>
+            @if ($_c))
+                <li><a href="{{ cat_url($_c) }}" title="Vai alla pagina: {{ $_c->mtitle }}">{{ $_c->title }}</a></li>
+            @endif
+            @if ($_sc)
+                <li><a href="{{ sub_url($_sc) }}" title="Vai alla pagina: {{ $_sc->mtitle }}">{{ $_sc->title }}</a></li>
+            @endif
+            @if ($_prod)
+                <li><a href="{{ prod_url($_prod) }}" title="Vai alla pagina: {{ $_prod->mtitle }}">{{ $_prod->title }}</a></li>
+            @endif
+		</ul>
+	</div>
+</section>
 
 @endif

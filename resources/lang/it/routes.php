@@ -24,10 +24,10 @@ return [
     'portfolio' => 'portfolio',
     'portfolio_show' => 'portfolio/{title}/{id}',
 
-    'category' => 's/{category}/{id}',
-    'subcategory' => 's/{category}/{subcategory}/{id}',
+    'category' => 's/{category}',
+    'subcategory' => 's/{category}/{subcategory}',
     
-    'product_show' => 's/{category}/{subcategory}/{product}/{id}',
+    'product_show' => 's/{category}/{subcategory}/{product}',
 
     'contact' => 'contact',
 ];

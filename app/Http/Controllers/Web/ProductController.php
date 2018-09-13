@@ -66,18 +66,17 @@ class ProductController extends Controller
         return view()->make('web.ecommerce.category.index', $data);
     }
 
-    public function show($foo_category, $foo_subcategory, $foo_product, $id) {
+    public function show($foo, $bar, $productslug) {
 
-    	$data['show_prod_detail'] = true;
-    	$data['page'] = \App\Product::active()->where('id', '=', $id)->first();
+        $data['show_prod_detail'] = true;
+        $data['page'] = \App\Product::leftJoin('lab_products_translations', 'lab_products.id', '=', 'lab_products_translations.product_id')
+            ->where('lab_products_translations.murl', '=', $productslug)
+            ->select('lab_products.*')
+            ->first();
     	if (!$data['page']) abort(404);
 
-        if (!Session::has('breadcrumb_cat'))
-            Session::put('breadcrumb_cat', $data['page']->category);
-
-        if (!Session::has('breadcrumb_subcat'))
-            Session::put('breadcrumb_subcat', $data['page']->subcategory);
-        
+        Session::put('breadcrumb_cat', $data['page']->category);
+        Session::put('breadcrumb_subcat', $data['page']->subcategory);
         Session::put('breadcrumb_prod', $data['page']);
 
         $data['page_images'] = $data['page']->attachments_images()->get();
@@ -93,8 +92,9 @@ class ProductController extends Controller
         SEO::opengraph()->setUrl(url()->current());        
         SEO::opengraph()->addProperty('locale', LaravelLocalization::getCurrentLocaleRegional());
         if ($data['page']->img)
-            SEO::opengraph()->addImage(img($data['page'], 'img')); 
+            SEO::opengraph()->addImage(img($data['page'], 'img'));
 
+        $data['catToShow'] = $data['page']->id_category;
     	return view()->make('web.ecommerce.category.index', $data);
     }
 }

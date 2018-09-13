@@ -71,8 +71,8 @@
                 <li class="dropdown @if($rname == 'category') active @endif">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalogue <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        @foreach ($arrCategories as $el)
-                            <li><a href="{{ action('Web\CategoryController@index', array($el->murl, $el->id)) }}">{{$el->title}}</a></li>
+                        @foreach ($arrCategories as $c)
+                            <li><a href="{{ cat_url($c) }}">{{$c->title}}</a></li>
                         @endforeach
                     </ul>
                 </li>

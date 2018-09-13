@@ -26,11 +26,24 @@ class AppServiceProvider extends ServiceProvider
         View::share ('languages', \LaravelLocalization::getSupportedLocales());
 
         // Category
-        $query =  \App\Category::active()->whereHas('translations', function ($query) {
+        $arrCategories =  \App\Category::active()
+                            ->whereHas('translations', function ($query) {
                                 $query->where('locale', App::getLocale())
                                 ->orderBy('title');
-                            });
-        View::share ('arrCategories', $query->get());
+                            })->get();
+        View::share ('arrCategories', $arrCategories);
+
+        // Subcategories
+        $arrSubcategories = array();
+        foreach ($arrCategories as $c) {
+            $arrSubcategories[$c->id] = \App\Subcategory::active()
+                                            ->whereType($c->id)
+                                            ->whereHas('translations', function ($query) {
+                                                $query->where('locale', App::getLocale())
+                                            ->orderBy('title');
+                                            })->get();
+        }
+        View::share ('arrSubcategories', $arrSubcategories);
 
         // GDPR
         $query =  \App\Cookie::active('1');
