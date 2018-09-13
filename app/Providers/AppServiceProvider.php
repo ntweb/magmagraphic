@@ -26,29 +26,29 @@ class AppServiceProvider extends ServiceProvider
         View::share ('languages', \LaravelLocalization::getSupportedLocales());
 
         // Category
-        $arrCategories =  \App\Category::active()
-                            ->whereHas('translations', function ($query) {
-                                $query->where('locale', App::getLocale())
-                                ->orderBy('title');
-                            })->get();
-        View::share ('arrCategories', $arrCategories);
-
-        // Subcategories
-        $arrSubcategories = array();
-        foreach ($arrCategories as $c) {
-            $arrSubcategories[$c->id] = \App\Subcategory::active()
-                                            ->whereType($c->id)
-                                            ->whereHas('translations', function ($query) {
-                                                $query->where('locale', App::getLocale())
-                                            ->orderBy('title');
-                                            })->get();
-        }
-        View::share ('arrSubcategories', $arrSubcategories);
+//        $arrCategories =  \App\Category::active()
+//                            ->whereHas('translations', function ($query) {
+//                                $query->where('locale', App::getLocale())
+//                                ->orderBy('title');
+//                            })->get();
+//        View::share ('arrCategories', $arrCategories);
+//
+//        // Subcategories
+//        $arrSubcategories = array();
+//        foreach ($arrCategories as $c) {
+//            $arrSubcategories[$c->id] = \App\Subcategory::active()
+//                                            ->whereType($c->id)
+//                                            ->whereHas('translations', function ($query) {
+//                                                $query->where('locale', App::getLocale())
+//                                            ->orderBy('title');
+//                                            })->get();
+//        }
+//        View::share ('arrSubcategories', $arrSubcategories);
 
         // GDPR
-        $query =  \App\Cookie::active('1');
-        View::share ('arrCookies', $query->get());
-        if (Auth::user()) Session::put('cookie_accepted', time());
+//        $query =  \App\Cookie::active('1');
+//        View::share ('arrCookies', $query->get());
+//        if (Auth::user()) Session::put('cookie_accepted', time());
 
         // for pagination that have paramenters
         View::share ('pagination_param', array());

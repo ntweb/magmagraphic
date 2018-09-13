@@ -19,7 +19,6 @@
         "laravel/tinker": "~1.0",
         "mcamara/laravel-localization": "1.2.*",
         "omnipay/paypal": "~2.0",
-        "roumen/sitemap": "^2.6",
         "themsaid/laravel-langman": "^1.3"
     },
     "require-dev": {

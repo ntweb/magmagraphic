@@ -169,7 +169,6 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Roumen\Sitemap\SitemapServiceProvider::class,
         Chencha\Share\ShareServiceProvider::class,
         Themsaid\Langman\LangmanServiceProvider::class,
 

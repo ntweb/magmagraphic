@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d86a3e12bcb2432664ca2e42a6bf2d8",
+    "content-hash": "742745f8fd1660ce9ff7c0f73324ecdc",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -2064,55 +2064,6 @@
                 "page speed"
             ],
             "time": "2018-02-11T21:33:58+00:00"
-        },
-        {
-            "name": "roumen/sitemap",
-            "version": "v2.6.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Laravelium/laravel-sitemap.git",
-                "reference": "43747375a1dc19b11aa52442c99628a8d104c0f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Laravelium/laravel-sitemap/zipball/43747375a1dc19b11aa52442c99628a8d104c0f7",
-                "reference": "43747375a1dc19b11aa52442c99628a8d104c0f7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Roumen\\Sitemap": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roumen Damianoff",
-                    "email": "roumen@crimsson.com",
-                    "homepage": "https://roumen.it",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A not so simple sitemap generator for Laravel.",
-            "homepage": "https://roumen.it/projects/laravel-sitemap",
-            "keywords": [
-                "Sitemap",
-                "generator",
-                "laravel"
-            ],
-            "abandoned": "laravelium/sitemap",
-            "time": "2016-10-06T06:13:52+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
